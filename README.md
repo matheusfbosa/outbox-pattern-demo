@@ -11,7 +11,7 @@ Both services are built with [Kotlin](https://kotlinlang.org/) and [Ktor](https:
 ## Microservices
 
 ### `order`
-- A REST API to create and publish orders the Outbox Pattern.
+- A REST API to create and publish orders using the Outbox Pattern.
 
 ### `shipment`
 - A Kafka consumer that listens for new orders.
