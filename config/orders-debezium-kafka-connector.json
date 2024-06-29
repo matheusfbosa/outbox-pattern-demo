@@ -1,0 +1,19 @@
+{
+    "name": "orders-debezium-kafka-connector",
+    "config": {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+        "database.hostname": "postgres",
+        "database.port": "5432",
+        "database.user": "postgres",
+        "database.password": "password",
+        "database.dbname": "order_db",
+        "database.server.name": "dbserver1",
+        "plugin.name": "pgoutput",
+        "table.include.list": "public.outbox",
+        "topic.prefix": "orders",
+        "transforms": "route",
+        "transforms.route.type": "org.apache.kafka.connect.transforms.RegexRouter",
+        "transforms.route.regex": "orders.public.outbox",
+        "transforms.route.replacement": "orders"
+    }
+}

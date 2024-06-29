@@ -69,6 +69,22 @@ services:
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
 
+  debezium:
+    image: debezium/connect:2.6
+    container_name: debezium
+    restart: always
+    ports:
+      - "8083:8083"
+    environment:
+      - BOOTSTRAP_SERVERS=kafka:9092
+      - GROUP_ID=debezium
+      - CONFIG_STORAGE_TOPIC=debezium_connect_config
+      - OFFSET_STORAGE_TOPIC=debezium_connect_offsets
+      - STATUS_STORAGE_TOPIC=debezium_connect_status
+    depends_on:
+      - kafka
+      - postgres
+
 volumes:
   postgres:
 

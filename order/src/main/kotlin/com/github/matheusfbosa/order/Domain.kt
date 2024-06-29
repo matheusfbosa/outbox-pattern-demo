@@ -16,12 +16,3 @@ data class Order(
     val status: OrderStatus,
     val orderDate: String
 )
-
-data class OutboxMessage(
-    val id: String,
-    val aggregateType: String,
-    val aggregateId: String,
-    val type: String,
-    val payload: String,
-    val createdAt: String
-)
